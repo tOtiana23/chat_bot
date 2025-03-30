@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: Basic Telegram Bot API
+  version: 1.0.0
+paths:
+  /hello:
+    get:
+      summary: Returns a greeting message.
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          required: false
+          description: The name to greet.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            text/plain:
+              schema:
+                type: string
+  /echo:
+    post:
+      summary: Echoes the message back.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: The message to echo.
+              required:
+                - message
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            text/plain:
+              schema:
+                type: string
